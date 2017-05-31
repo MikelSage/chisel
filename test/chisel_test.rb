@@ -14,5 +14,10 @@ class ChiselTest < Minitest::Test
     assert_equal './data/my_output.html', chisel.output_file
   end
 
-  
+  def test_it_can_parse_a_paragraph
+    input = "You just have to try the cheesecake\n"
+    expected = "<p>You just have to try the cheesecake</p>\n"
+
+    assert_equal expected, chisel.parse_paragraph(input)
+  end
 end

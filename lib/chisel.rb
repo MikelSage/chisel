@@ -4,4 +4,8 @@ class Chisel
     @input_file = paths[0]
     @output_file = paths[1]
   end
+
+  def parse_paragraph(text)
+    "<p>#{text[0..-2]}</p>\n"
+  end
 end
