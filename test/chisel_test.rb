@@ -10,8 +10,8 @@ class ChiselTest < Minitest::Test
 
   def test_it_exists_and_knows_its_file_paths
     assert_instance_of Chisel, chisel
-    assert_equal './data/my_input.md', chisel.input_file
-    assert_equal './data/my_output.html', chisel.output_file
+    assert_instance_of File, chisel.input_file
+    assert_instance_of File, chisel.output_file
   end
 
   def test_it_can_parse_a_paragraph
@@ -28,4 +28,13 @@ class ChiselTest < Minitest::Test
     assert_equal "<h1>This is a header</h1>\n", chisel.parse_header(input)
     assert_equal "<h2>This is another header.</h2>\n", chisel.parse_header(input2)
   end
+
+  # def test_it_can_convert_paragraphs_and_headers
+  #   expected = "<h1>My Life in Desserts</h1>\n" +
+  #         "<h2>Chapter 1: The Beginning</h2>\n" +
+  #         "<p>\"You just *have* to try the cheesecake,\" he said. \"Ever " +
+  #         "since it appeared in **Food & Wine** this place has been packed " +
+  #         "every night.\"</p>\n"
+  #   assert_equal expected, File.read("./data/my_output.html")
+  # end
 end
