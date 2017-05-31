@@ -6,6 +6,12 @@ class Chisel
   end
 
   def parse_paragraph(text)
-    "<p>#{text[0..-2]}</p>\n"
+    "<p>#{text.chomp}</p>\n"
+  end
+
+  def parse_header(text)
+    level = text.count('#')
+    clean_text = text.tr_s('#', '').chomp.strip
+    "<h#{level}>#{clean_text}</h#{level}>\n"
   end
 end

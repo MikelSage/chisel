@@ -20,4 +20,12 @@ class ChiselTest < Minitest::Test
 
     assert_equal expected, chisel.parse_paragraph(input)
   end
+
+  def test_it_can_parse_a_header
+    input = "#This is a header\n"
+    input2 = "## This is another header.\n"
+
+    assert_equal "<h1>This is a header</h1>\n", chisel.parse_header(input)
+    assert_equal "<h2>This is another header.</h2>\n", chisel.parse_header(input2)
+  end
 end
